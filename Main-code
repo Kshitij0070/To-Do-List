@@ -3,7 +3,7 @@
 def show_menu():
     print("1. Add task")
     print("2. View tasks")
-    print("3. Remove task")
+    print("3. Delete task")
     print("4. Mark task as completed")
     print("5. Quit")
 
