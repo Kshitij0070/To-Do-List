@@ -1,1 +1,58 @@
+# To-Do List Manager
+
+def show_menu():
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Remove task")
+    print("4. Mark task as completed")
+    print("5. Quit")
+
+tasks = []
+
+while True:
+    show_menu()
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        task = input("Enter the task: ")
+        tasks.append({"task": task, "completed": False})
+        print("Task added!")
+
+    elif choice == "2":
+        if not tasks:
+            print("No tasks yet.")
+        else:
+            print("Tasks:")
+            for idx, task in enumerate(tasks, start=1):
+                status = "✓" if task["completed"] else " "
+                print(f"{idx}. [{status}] {task['task']}")
+
+    elif choice == "3":
+        if not tasks:
+            print("No tasks to remove.")
+        else:
+            idx = int(input("Enter the task number to remove: ")) - 1
+            if 0 <= idx < len(tasks):
+                removed_task = tasks.pop(idx)
+                print(f"Task '{removed_task['task']}' removed.")
+            else:
+                print("Invalid task number.")
+
+    elif choice == "4":
+        if not tasks:
+            print("No tasks to mark as completed.")
+        else:
+            idx = int(input("Enter the task number to mark as completed: ")) - 1
+            if 0 <= idx < len(tasks):
+                tasks[idx]["completed"] = True
+                print(f"Task '{tasks[idx]['task']}' marked as completed.")
+            else:
+                print("Invalid task number.")
+
+    elif choice == "5":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please choose a valid option.")
 
